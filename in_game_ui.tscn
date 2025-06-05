@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcjmkoh2s2lf5"]
+
+[ext_resource type="Theme" uid="uid://brijxqlraiiph" path="res://in_game_theme.tres" id="1_kenku"]
+[ext_resource type="Script" uid="uid://cs53raytjdkqo" path="res://in_game_ui.gd" id="1_onc8m"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_onc8m"]
+device = -1
+keycode = 90
+unicode = 122
+
+[sub_resource type="Shortcut" id="Shortcut_e6quo"]
+events = [SubResource("InputEventKey_onc8m")]
+
+[node name="InGameUI" type="CanvasLayer"]
+script = ExtResource("1_onc8m")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kenku")
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LeftFlipperButton" type="Button" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -250.0
+offset_right = 250.0
+grow_vertical = 0
+mouse_filter = 1
+action_mode = 0
+shortcut = SubResource("Shortcut_e6quo")
+
+[node name="RightFlipperButton" type="Button" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -250.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+action_mode = 0
+
+[node name="Button" type="Button" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+text = "RESET"
+
+[connection signal="button_up" from="MarginContainer/Control/LeftFlipperButton" to="." method="_on_flipper_button_button_up" binds= [false]]
+[connection signal="pressed" from="MarginContainer/Control/LeftFlipperButton" to="." method="_on_flipper_button_pressed" binds= [false]]
+[connection signal="button_up" from="MarginContainer/Control/RightFlipperButton" to="." method="_on_flipper_button_button_up" binds= [true]]
+[connection signal="pressed" from="MarginContainer/Control/RightFlipperButton" to="." method="_on_flipper_button_pressed" binds= [true]]
+[connection signal="pressed" from="MarginContainer/Control/Button" to="." method="_on_button_pressed"]
