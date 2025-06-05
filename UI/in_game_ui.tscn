@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcjmkoh2s2lf5"]
+[gd_scene load_steps=5 format=3 uid="uid://dcjmkoh2s2lf5"]
 
 [ext_resource type="Theme" uid="uid://brijxqlraiiph" path="res://UI/in_game_theme.tres" id="1_kenku"]
 [ext_resource type="Script" uid="uid://cs53raytjdkqo" path="res://Scripts/in_game_ui.gd" id="1_onc8m"]
+
+[sub_resource type="Gradient" id="Gradient_trw78"]
+offsets = PackedFloat32Array(0.450746, 0.653731, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jpmjn"]
+gradient = SubResource("Gradient_trw78")
+width = 240
+height = 240
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="InGameUI" type="CanvasLayer"]
 script = ExtResource("1_onc8m")
@@ -17,31 +29,6 @@ theme = ExtResource("1_kenku")
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="LeftFlipperButton" type="Button" parent="MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -250.0
-offset_right = 250.0
-grow_vertical = 0
-mouse_filter = 1
-action_mode = 0
-
-[node name="RightFlipperButton" type="Button" parent="MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -250.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 1
-action_mode = 0
-
 [node name="Button" type="Button" parent="MarginContainer/Control"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
@@ -51,8 +38,16 @@ offset_bottom = 8.0
 grow_horizontal = 2
 text = "RESET"
 
-[connection signal="button_down" from="MarginContainer/Control/LeftFlipperButton" to="." method="_on_flipper_button_button_down" binds= [false]]
-[connection signal="button_up" from="MarginContainer/Control/LeftFlipperButton" to="." method="_on_flipper_button_button_up" binds= [false]]
-[connection signal="button_down" from="MarginContainer/Control/RightFlipperButton" to="." method="_on_flipper_button_button_down" binds= [true]]
-[connection signal="button_up" from="MarginContainer/Control/RightFlipperButton" to="." method="_on_flipper_button_button_up" binds= [true]]
+[node name="LeftFlipperButton" type="TouchScreenButton" parent="."]
+position = Vector2(33, 992)
+texture_normal = SubResource("GradientTexture2D_jpmjn")
+
+[node name="RightFlipperButton" type="TouchScreenButton" parent="."]
+position = Vector2(448, 992)
+texture_normal = SubResource("GradientTexture2D_jpmjn")
+
 [connection signal="pressed" from="MarginContainer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="LeftFlipperButton" to="." method="_on_flipper_button_button_down" binds= [false]]
+[connection signal="released" from="LeftFlipperButton" to="." method="_on_flipper_button_button_up" binds= [false]]
+[connection signal="pressed" from="RightFlipperButton" to="." method="_on_flipper_button_button_down" binds= [true]]
+[connection signal="released" from="RightFlipperButton" to="." method="_on_flipper_button_button_up" binds= [true]]

@@ -1,10 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://bipaolrgohu42"]
+[gd_scene load_steps=25 format=3 uid="uid://bipaolrgohu42"]
 
 [ext_resource type="PackedScene" uid="uid://dcjmkoh2s2lf5" path="res://UI/in_game_ui.tscn" id="1_ic41u"]
+[ext_resource type="Script" uid="uid://48ebr6pudgq6" path="res://Scripts/label_debug.gd" id="2_lmqp7"]
 [ext_resource type="PackedScene" uid="uid://cmlysecdus4wm" path="res://BoardElements/board.tscn" id="2_ptks8"]
 [ext_resource type="PhysicsMaterial" uid="uid://bvow32wgtbsge" path="res://BoardElements/tres/board_walls.tres" id="3_lmqp7"]
 [ext_resource type="PackedScene" uid="uid://c65ehav0e74mh" path="res://BoardElements/ball.tscn" id="5_ptks8"]
 [ext_resource type="PackedScene" uid="uid://b6wxuxp36f1s2" path="res://BoardElements/peg.tscn" id="6_lmqp7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tfm5f"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_lmqp7"]
+font_size = 48
 
 [sub_resource type="BoxMesh" id="BoxMesh_tfm5f"]
 size = Vector3(1.45, 0.7, 0.15)
@@ -62,12 +69,35 @@ data = PackedVector3Array(-6, 0.35, 0.075, 6, 0.35, 0.075, -6, -0.35, 0.075, 6, 
 
 [node name="InGameUI" parent="." instance=ExtResource("1_ic41u")]
 
+[node name="Label" type="Label" parent="InGameUI"]
+visible = false
+offset_left = 48.0
+offset_top = 155.0
+offset_right = 682.0
+offset_bottom = 222.0
+text = "asd"
+label_settings = SubResource("LabelSettings_tfm5f")
+script = ExtResource("2_lmqp7")
+
+[node name="Label" type="Label" parent="InGameUI/Label"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 67.0
+offset_right = 106.0
+offset_bottom = 146.0
+text = "asd"
+label_settings = SubResource("LabelSettings_lmqp7")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.434916, 0.900471, 0, -0.900471, 0.434916, 0, 9.1396, 7.13667)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 1.49012e-07, -2.98023e-08, 2.98023e-08, 1, 0, 0, 0)
+
+[node name="Ball" parent="." instance=ExtResource("5_ptks8")]
+transform = Transform3D(1, 0, 0, 0, 0.993572, -0.113203, 0, 0.113203, 0.993572, 3.265, -0.763328, 6.69966)
+linear_velocity = Vector3(0, 0, -12)
 
 [node name="Board" parent="." instance=ExtResource("2_ptks8")]
 physics_material_override = ExtResource("3_lmqp7")
@@ -197,10 +227,6 @@ mesh = SubResource("BoxMesh_xixi7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Board/LDrainBase"]
 transform = Transform3D(0.999999, -3.72529e-09, 1.78814e-07, 2.98023e-08, 1, 7.45058e-09, 0, 4.47035e-08, 1, 0, 0.35, 0)
 shape = SubResource("ConcavePolygonShape3D_h24tr")
-
-[node name="Ball" parent="Board" instance=ExtResource("5_ptks8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.265, -5.96046e-08, 6.743)
-linear_velocity = Vector3(0, 0, -12)
 
 [node name="RDrainWall" type="StaticBody3D" parent="Board"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, -4.44089e-16, -1, 0, -4.37114e-08, 3, 0, 1)

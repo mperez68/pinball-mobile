@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cmlysecdus4wm"]
 
-[ext_resource type="Script" uid="uid://bwigumvkir0di" path="res://scripts/board.gd" id="1_f7bes"]
+[ext_resource type="Script" uid="uid://bwigumvkir0di" path="res://Scripts/board.gd" id="1_f7bes"]
 [ext_resource type="PhysicsMaterial" uid="uid://bvow32wgtbsge" path="res://BoardElements/tres/board_walls.tres" id="1_jqgjh"]
 [ext_resource type="Script" uid="uid://d02hesxr7rjwg" path="res://Scripts/flipper.gd" id="1_p0ybc"]
 [ext_resource type="BoxMesh" uid="uid://cj02njb1e0ag7" path="res://BoardElements/tres/flipper_mesh.tres" id="5_vf5bc"]
