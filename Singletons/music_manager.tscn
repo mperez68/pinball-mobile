@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw7sfvc47mi55"]
+
+[ext_resource type="Script" uid="uid://cfu2rxgiou26t" path="res://scripts/music_manager.gd" id="1_bc2vq"]
+[ext_resource type="AudioStream" uid="uid://brlsdgy6q8kfq" path="res://assets/music/085PINGTHEMBALLS.wav" id="2_mlhn3"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_bc2vq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mlhn3")
+autoplay = true
