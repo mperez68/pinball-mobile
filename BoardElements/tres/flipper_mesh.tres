@@ -1,4 +1,11 @@
-[gd_resource type="BoxMesh" format=3 uid="uid://cj02njb1e0ag7"]
+[gd_resource type="BoxMesh" load_steps=3 format=3 uid="uid://cj02njb1e0ag7"]
+
+[ext_resource type="Texture2D" uid="uid://okncalxmft87" path="res://assets/textures/oak_veneer_01_4k.blend/textures/oak_veneer_01_diff_4k.jpg" id="1_5al2i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5465g"]
+albedo_color = Color(0.617455, 0.617455, 0.617455, 1)
+albedo_texture = ExtResource("1_5al2i")
 
 [resource]
+material = SubResource("StandardMaterial3D_5465g")
 size = Vector3(0.76, 0.127, 0.19)

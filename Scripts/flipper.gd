@@ -1,6 +1,6 @@
 class_name Flipper extends RigidBody3D
 
-var swing_torque = Vector3(0,200,0)
+var swing_torque = Vector3(0,500,0)
 
 @export_enum("Left", "Right") var direction: int
 var trigger_action: StringName = "left_flipper"
@@ -18,4 +18,5 @@ func flip():
 	constant_torque = swing_torque
 
 func release():
-	constant_torque = -swing_torque / 2
+	constant_torque = Vector3.ZERO
+	apply_torque_impulse(-swing_torque / 2)

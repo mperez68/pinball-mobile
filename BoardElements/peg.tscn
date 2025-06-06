@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6wxuxp36f1s2"]
+[gd_scene load_steps=5 format=3 uid="uid://b6wxuxp36f1s2"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://c7gxb7jylp4pm" path="res://BoardElements/tres/peg.tres" id="1_n6i02"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6i02"]
+albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
+metallic = 0.45
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_tfm5f"]
+material = SubResource("StandardMaterial3D_n6i02")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 0.7
